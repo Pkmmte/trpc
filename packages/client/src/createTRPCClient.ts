@@ -133,7 +133,9 @@ export function createTRPCClientProxy<TRouter extends AnyRouter>(
 
       const fullPath = pathCopy.join('.');
 
-      return (client as any)[procedureType](fullPath, ...args);
+      // eslint-disable-next-line no-console
+      console.log('Patched fullPath', fullPath);
+      return (client as any)[procedureType](...args);
     },
   );
   return createFlatProxy<CreateTRPCClient<TRouter>>((key) => {
